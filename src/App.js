@@ -1,13 +1,26 @@
 import React from 'react';
-import socket from "./socket";
+import reducer from "./reducer";
 
 import JoinBlock from "./components/JoinBlock";
 import "./App.css";
 
 function App() {
+  const [state, dispatch] = React.useReducer(reducer, {
+    isAuth: false
+  });
+
+  const onLogin = () => {
+    dispatch({
+      type: 'IS_AUTH',
+      payload: true
+    });
+  }
+
+  console.log(state);
+
   return (
     <div className="wrapper">
-      <JoinBlock />
+      {!state.isAuth && < JoinBlock onLogin={onLogin} / >}
     </div>
   );
 }

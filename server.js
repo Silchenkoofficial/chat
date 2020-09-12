@@ -20,7 +20,7 @@ app.post('/rooms', (req, res) => {
             ['messages', []],
         ]));
     }
-    res.json(rooms.values);
+    res.send();
 });
 
 io.on('connection', (socket) => {
